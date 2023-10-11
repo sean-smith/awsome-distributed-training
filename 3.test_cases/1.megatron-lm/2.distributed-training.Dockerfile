@@ -79,7 +79,8 @@ RUN git clone https://github.com/NVIDIA/nccl /opt/nccl \
 ###################################################
 ## Install AWS-OFI-NCCL plugin
 RUN export OPAL_PREFIX="" \
-    && git clone https://github.com/aws/aws-ofi-nccl.git /opt/aws-ofi-nccl \
+    && wget -O aws-ofi-nccl.tar.gz https://github.com/aws/aws-ofi-nccl/releases/download/v${AWS_OFI_NCCL_VERSION}/aws-ofi-nccl-${AWS_OFI_NCCL_VERSION}.tar.gz \
+    && tar -xzf aws-ofi-nccl.tar.gz /opt/aws-ofi-nccl \
     && cd /opt/aws-ofi-nccl \
     && env \
     && git checkout ${AWS_OFI_NCCL_VERSION} \
